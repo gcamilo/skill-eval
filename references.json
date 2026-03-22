@@ -1,0 +1,68 @@
+{
+  "_doc": "Reference approaches for consulting skill eval. Each approach defines what context is prepended to the system prompt.",
+  "approaches": {
+    "A": {
+      "name": "full_reference",
+      "description": "SKILL.md + MBB case text (hardcoded excerpt)",
+      "type": "inline",
+      "content_key": "full_reference"
+    },
+    "B": {
+      "name": "summary",
+      "description": "SKILL.md + 6-point curated summary of MBB patterns",
+      "type": "inline",
+      "content_key": "summary"
+    },
+    "C": {
+      "name": "skill_only",
+      "description": "SKILL.md alone — baseline",
+      "type": "skill_only"
+    },
+    "D": {
+      "name": "examples_only",
+      "description": "SKILL.md + all 4 example files (no frameworks-index)",
+      "type": "skill_files",
+      "files": [
+        "examples/end-to-end-full-case.md",
+        "examples/end-to-end-quick-structure.md",
+        "examples/issue-tree-good-vs-bad.md",
+        "examples/recommendation-good-vs-bad.md"
+      ]
+    },
+    "E": {
+      "name": "frameworks_only",
+      "description": "SKILL.md + frameworks-index.md (no examples)",
+      "type": "skill_files",
+      "files": [
+        "references/frameworks-index.md"
+      ]
+    },
+    "F": {
+      "name": "evidence_standards_only",
+      "description": "SKILL.md + evidence-standards.md only",
+      "type": "skill_files",
+      "files": [
+        "references/evidence-standards.md"
+      ]
+    },
+    "G": {
+      "name": "full_skill_bundle",
+      "description": "SKILL.md + ALL reference files (frameworks + evidence + examples + diagram-templates + tooling-appendix)",
+      "type": "skill_files",
+      "files": [
+        "references/frameworks-index.md",
+        "references/evidence-standards.md",
+        "references/diagram-templates.md",
+        "references/tooling-appendix.md",
+        "examples/end-to-end-full-case.md",
+        "examples/end-to-end-quick-structure.md",
+        "examples/issue-tree-good-vs-bad.md",
+        "examples/recommendation-good-vs-bad.md"
+      ]
+    }
+  },
+  "inline_content": {
+    "full_reference": "\n=== McKinsey Problem Solving Test (Real Case: Kosher Franks) ===\nKosher Franks is a company that sells hot dogs and other packaged meat products in the US.\nStrong brand recognition, sold through grocery chains. The CEO wants 40% revenue growth in 5 years.\n\nThe case involves:\n- Evaluating growth scenarios (A-D) against CEO targets\n- Analyzing revenue by product category (hot dogs, sliced meats, other)\n- Estimating impact of 5% price reduction + $2.1M ad campaign in LA\n- Market share analysis across US cities\n- Calculating ROI of marketing spend\n\nKey data: $450M total revenue, hot dogs 72% of sales, 1M purchasers in LA,\n$3.50 retail price, grocery chain pays $2.50, distributor margin ~30%.\n\nFramework applied: Revenue growth decomposition (price x volume x mix),\nmarket sizing (city-level), ROI analysis (incremental revenue vs. marketing cost).\n\n=== BCG Case Structure (Market Analysis) ===\nStandard BCG case structure:\n1. Clarify the objective and scope\n2. Structure with a MECE framework (market attractiveness + internal capabilities)\n3. Size the market (top-down or bottom-up)\n4. Analyze competitive dynamics\n5. Evaluate financial impact\n6. Make a recommendation with risks\n\n=== Bain Methodology ===\nBain's approach emphasizes:\n- Results Delivery: tie strategy to measurable outcomes\n- Full Potential analysis: what's the theoretical maximum?\n- RAPID decision framework for org decisions\n- NPS-driven customer strategy\n- Zero-based cost analysis\n\nPractice cases focus on: market entry (CoffeeCo), retail growth (FashionCo),\nfood/bev market entry, public sector growth, travel turnaround.",
+    "summary": "Key consulting patterns from MBB cases:\n\n1. REVENUE GROWTH: Always decompose as Price x Volume x Mix. Test each lever independently.\n2. MARKET SIZING: Use both top-down (TAM -> SAM -> SOM) and bottom-up (units x price x customers).\n3. ROI: Incremental revenue minus cost. Include cannibalization and competitive response.\n4. STRUCTURE: Clarify -> MECE framework -> hypothesize -> analyze -> synthesize -> recommend.\n5. EVIDENCE: Cite specific numbers with units and time periods. Never make up data.\n6. RECOMMENDATION: Specific, phased, owned. Include \"what if we're wrong\" risks."
+  }
+}

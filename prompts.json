@@ -1,0 +1,30 @@
+{
+  "standard": [
+    {"id": "market-entry", "prompt": "Should a $50M ARR B2B SaaS company enter the European market? 200 employees, $8M cash."},
+    {"id": "margin-decline", "prompt": "Retail client gross margins dropped from 34% to 30%. Revenue flat at $2.1B. Why and what to do?"},
+    {"id": "pe-acquisition", "prompt": "Evaluate: $75M healthcare IT company, 18% growth, 22% EBITDA, 95% recurring, top 3 = 45% revenue. 12x EBITDA."},
+    {"id": "cost-reduction", "prompt": "Structure a $40M cost reduction for a 10K-person manufacturer ($800M costs). No quality impact."},
+    {"id": "strategy-memo", "prompt": "1-page board memo: $5B regional bank — invest $50M in digital platform or acquire a fintech?"}
+  ],
+  "ambiguous": [
+    {"id": "ambig-growth", "prompt": "We need to grow faster. What should we focus on?"},
+    {"id": "ambig-competitive", "prompt": "Our competitors are eating our lunch. Help."},
+    {"id": "ambig-reorg", "prompt": "The CEO wants to reorganize. Is that a good idea?"},
+    {"id": "ambig-pricing", "prompt": "Should we raise prices?"},
+    {"id": "ambig-innovation", "prompt": "We haven't launched anything new in 2 years. What do we do?"}
+  ],
+  "quick_structure": [
+    {"id": "qs-build-buy", "prompt": "Help me think through build vs buy for our CRM system"},
+    {"id": "qs-hire", "prompt": "Should I hire a VP of Sales or promote from within?"},
+    {"id": "qs-pivot", "prompt": "We're considering pivoting from B2B to B2C. Key considerations?"},
+    {"id": "qs-remote", "prompt": "Should we go fully remote or mandate office 3 days?"},
+    {"id": "qs-pricing-model", "prompt": "Per-seat pricing vs usage-based — what are the tradeoffs?"}
+  ],
+  "adversarial": [
+    {"id": "adv-swot", "prompt": "Just do a SWOT analysis of Apple"},
+    {"id": "adv-generic", "prompt": "Give me a strategy for my company"},
+    {"id": "adv-framework-salad", "prompt": "Apply Porter's Five Forces, 7S, BCG Matrix, and PESTEL to Tesla"},
+    {"id": "adv-no-data", "prompt": "Should we acquire CompanyX? I can't share any financial details."},
+    {"id": "adv-simple", "prompt": "Should I order more inventory this month? We're running low."}
+  ]
+}
