@@ -1,0 +1,160 @@
+{
+  "_doc": "Consulting skill rubric — 9 criteria across 3 tiers. Used by scoring.py.",
+  "version": "v2.0",
+  "name": "consulting",
+  "description": "Management consulting output quality, with emphasis on process discipline.",
+  "tiers": {
+    "1": "Process Discipline",
+    "2": "Output Quality",
+    "3": "Decision Quality"
+  },
+  "criteria": {
+    "hard_gate": {
+      "tier": 1,
+      "name": "Hard Gate / Assumptions",
+      "description": "Did the output explicitly state assumptions, clarify scope, or ask the right questions before diving into analysis? Does it identify what it doesn't know?",
+      "anchors": {
+        "1": "Dives straight into analysis with no assumptions stated, no scope clarification",
+        "4": "Brief mention of 'assuming X' but buried in the analysis, not upfront",
+        "7": "Clear assumptions section upfront, marked as [A], scope boundaries defined",
+        "10": "Exemplary: provisional assumptions with confidence levels, explicit 'what I need to validate', kill tests for key assumptions"
+      }
+    },
+    "evidence_labeling": {
+      "tier": 1,
+      "name": "Evidence Labeling",
+      "description": "Are claims explicitly tagged as [F]act, [A]ssumption, or [I]nference? Can the reader distinguish verified data from educated guesses?",
+      "anchors": {
+        "1": "No labeling at all — claims presented as facts with no sourcing or qualification",
+        "4": "Some hedging language ('likely', 'probably') but no systematic labeling",
+        "7": "Consistent [F]/[A]/[I] tags or equivalent on most claims, sources cited for facts",
+        "10": "Every substantive claim labeled, facts sourced, assumptions have confidence ranges, inferences show reasoning chain"
+      }
+    },
+    "framework_discipline": {
+      "tier": 1,
+      "name": "Framework Discipline",
+      "description": "Did it select the right framework for the problem and apply it step-by-step? Did it resist framework salad? Did it note when the framework breaks down?",
+      "anchors": {
+        "1": "No framework, or names frameworks without applying them ('we should use Porter's Five Forces')",
+        "4": "Framework applied but generic/forced — same framework regardless of problem type",
+        "7": "Right framework selected with rationale, applied step-by-step with problem-specific data",
+        "10": "Framework selected with anti-selection reasoning ('not X because...'), applied with depth, limitations noted, combined with complementary framework where appropriate"
+      }
+    },
+    "devils_advocate": {
+      "tier": 1,
+      "name": "Devil's Advocate / Counter-arguments",
+      "description": "Is there a dedicated section challenging the recommendation? Are risks specific, not generic?",
+      "anchors": {
+        "1": "No counter-arguments or risk discussion",
+        "4": "Generic risks listed ('there are risks') without specificity",
+        "7": "Dedicated section with specific counter-arguments, likelihood/impact assessed, mitigations proposed",
+        "10": "Strongest possible counter-argument articulated, pre-mortem analysis, explicit 'what would change our recommendation', contingency plans"
+      }
+    },
+    "structure": {
+      "tier": 2,
+      "name": "Structure / MECE",
+      "description": "Is the analysis decomposed into mutually exclusive, collectively exhaustive parts? Pyramid principle (answer first)? Clear hierarchy?",
+      "anchors": {
+        "1": "Stream of consciousness, no headers, no logical flow",
+        "4": "Some headers but overlapping categories, answer buried at the end",
+        "7": "Clear MECE decomposition, bottom line up front, well-organized hierarchy",
+        "10": "Textbook MECE structure, issue tree with priority ordering, answer first with supporting branches, nothing missing"
+      }
+    },
+    "evidence_depth": {
+      "tier": 2,
+      "name": "Evidence Depth",
+      "description": "Are claims backed by specific numbers with units, time periods, and sources? Or vague assertions?",
+      "anchors": {
+        "1": "No numbers, pure assertion ('the market is large')",
+        "4": "Some numbers but vague ('revenue is significant') or unsourced",
+        "7": "Specific numbers with units and time periods, most claims grounded in data",
+        "10": "Every claim has data support, benchmarks cited, calculations shown, sensitivity to assumptions explicit"
+      }
+    },
+    "actionability": {
+      "tier": 2,
+      "name": "Actionability",
+      "description": "Are recommendations specific (who does what by when)? Phased? Risk-aware? Or vague platitudes?",
+      "anchors": {
+        "1": "No recommendations, or 'the company should consider improving'",
+        "4": "Recommendations present but generic ('invest in digital'), no owners or timelines",
+        "7": "Specific recommendations with owners, phased roadmap, resource estimates",
+        "10": "Recommendations with decision criteria, phased with milestones, contingency triggers, budget/resource requirements, success metrics"
+      }
+    },
+    "completeness": {
+      "tier": 2,
+      "name": "Completeness",
+      "description": "Bottom line up front? Key risks identified? Next steps listed? Nothing critical missing?",
+      "anchors": {
+        "1": "Incomplete — missing major sections, no conclusion or next steps",
+        "4": "Has a conclusion but missing risks, next steps, or key analysis branches",
+        "7": "Bottom line, risks, next steps all present. Analysis covers major branches",
+        "10": "Nothing missing — BLUF, all branches analyzed, risks with mitigations, next steps with priorities, follow-up questions identified"
+      }
+    },
+    "decision_quality": {
+      "tier": 3,
+      "name": "Decision Quality",
+      "description": "Would a senior partner present this to a client? Would you make a real business decision based on this analysis?",
+      "anchors": {
+        "1": "Would not trust this for any decision — generic, wrong, or misleading",
+        "4": "Useful starting point but needs significant rework before presenting",
+        "7": "Would present to a client with minor edits — analysis is sound, recommendations are defensible",
+        "10": "Ready to present as-is — insightful, well-reasoned, addresses the actual decision, client would act on it"
+      }
+    }
+  },
+  "checker_module": "rubrics.consulting_checkers",
+  "prompts": {
+    "standard": [
+      {"id": "market-entry", "prompt": "Should a $50M ARR B2B SaaS company enter the European market? 200 employees, $8M cash.", "difficulty": "easy"},
+      {"id": "margin-decline", "prompt": "Retail client gross margins dropped from 34% to 30%. Revenue flat at $2.1B. Why and what to do?", "difficulty": "easy"},
+      {"id": "pe-acquisition", "prompt": "Evaluate: $75M healthcare IT company, 18% growth, 22% EBITDA, 95% recurring, top 3 = 45% revenue. 12x EBITDA.", "difficulty": "medium"},
+      {"id": "cost-reduction", "prompt": "Structure a $40M cost reduction for a 10K-person manufacturer ($800M costs). No quality impact.", "difficulty": "medium"},
+      {"id": "strategy-memo", "prompt": "1-page board memo: $5B regional bank — invest $50M in digital platform or acquire a fintech?", "difficulty": "medium"}
+    ],
+    "ambiguous": [
+      {"id": "ambig-growth", "prompt": "We need to grow faster. What should we focus on?", "difficulty": "hard"},
+      {"id": "ambig-competitive", "prompt": "Our competitors are eating our lunch. Help.", "difficulty": "hard"},
+      {"id": "ambig-reorg", "prompt": "The CEO wants to reorganize. Is that a good idea?", "difficulty": "hard"},
+      {"id": "ambig-pricing", "prompt": "Should we raise prices?", "difficulty": "hard"},
+      {"id": "ambig-innovation", "prompt": "We haven't launched anything new in 2 years. What do we do?", "difficulty": "hard"}
+    ],
+    "adversarial": [
+      {"id": "adv-swot", "prompt": "Just do a SWOT analysis of Apple", "difficulty": "hard"},
+      {"id": "adv-generic", "prompt": "Give me a strategy for my company", "difficulty": "hard"},
+      {"id": "adv-framework-salad", "prompt": "Apply Porter's Five Forces, 7S, BCG Matrix, and PESTEL to Tesla", "difficulty": "hard"},
+      {"id": "adv-no-data", "prompt": "Should we acquire CompanyX? I can't share any financial details.", "difficulty": "hard"},
+      {"id": "adv-simple", "prompt": "Should I order more inventory this month? We're running low.", "difficulty": "medium"}
+    ]
+  },
+  "approaches": {
+    "baseline": {
+      "type": "system_prompt",
+      "system_prompt": "You are a management consulting expert. Provide structured, actionable analysis."
+    },
+    "skill_only": {
+      "type": "skill_file",
+      "file": "SKILL.md"
+    },
+    "full_bundle": {
+      "type": "skill_bundle",
+      "files": [
+        "SKILL.md",
+        "references/frameworks-index.md",
+        "references/evidence-standards.md",
+        "examples/end-to-end-full-case.md",
+        "examples/end-to-end-quick-structure.md"
+      ]
+    }
+  },
+  "judge_constraints": {
+    "hard_gate_max_without_checker": 3,
+    "evidence_labeling_max_without_checker": 4
+  }
+}
